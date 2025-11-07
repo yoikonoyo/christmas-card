@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Fortune Teller: Discover Your True Self and the Year to Come</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hidden { display: none; }
+    .answer-btn.disabled { pointer-events: none; opacity: 0.6; }
+    .answer-btn.selected { background-color: #fbbf24; color: #1f2937; }
+    #progress-bar { height: 10px; background-color: #fbbf24; width: 0%; transition: width 0.3s; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center p-4 text-gray-800 text-lg leading-relaxed">
+
+  <h1 class="text-3xl font-bold mb-6 text-center">AI Fortune Teller: Discover Your True Self and the Year to Come</h1>
+
+  <!-- プログレス -->
+  <div id="progress-section" class="w-full max-w-xl mb-4">
+    <div class="flex justify-between mb-1">
+     <span id="progress-text" class="text-gray-700 text-base"></span>
+    </div>
+    <div class="w-full bg-gray-300 rounded-full">
+      <div id="progress-bar" class="rounded-full"></div>
+    </div>
+  </div>
+
+  <!-- クイズ本体 -->
+  <div id="quiz-content" class="w-full max-w-xl bg-white p-6 rounded-lg shadow-md">
+   <h2 id="question" class="text-2xl font-semibold mb-8 text-center min-h-[100px]"></h2>
+    <div id="answers" class="grid grid-cols-1 gap-4"></div>
+  </div>
+
+  <!-- ローディング演出 -->
+  <div id="loading-container" class="hidden w-full max-w-xl p-6 text-center text-xl font-semibold">
+    <p></p>
+  </div>
+
+  <!-- 結果表示 -->
+  <div id="result-container" class="hidden w-full max-w-xl bg-white p-6 rounded-lg shadow-md text-center">
+    <h2 id="result-title" class="text-2xl font-semibold mb-4 text-sky-800"></h2>
+    <img id="result-image" class="mx-auto mb-4 rounded-lg shadow-md" width="200" alt="">
+    <p id="result-description" class="mb-4 text-gray-800 text-lg leading-relaxed"></p>
+    <p id="result-message" class="mb-6 text-gray-900 text-lg leading-relaxed italic"></p>
+
+
+    <!-- 🔹トップページへ戻るボタン -->
+    <a href="index.html"
+       class="inline-block bg-sky-400 hover:bg-sky-500 text-white font-semibold py-2 px-6 rounded-full transition-all shadow">
+       Back to Christmas Page
+    </a>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const quizData = [
+  { question: "Your friend seems down. If you can’t just ignore it, which type are you?", answers: [
+      { text: "You say, 'What’s wrong? I’m here if you want to talk,' and become a good listener full of empathy.", type: "empathy" },
+      { text: "You say, 'What can I do? Let’s find a solution together,' and your rescue spirit kicks in.", type: "leader" }
+    ]},
+  { question: "You’ve hit a big wall (not a physical one!). What do you do?", answers: [
+      { text: "First, pause and analyze. You take time to calmly plan your next move.", type: "analysis" },
+      { text: "Less thinking, more doing! You act first and figure it out as you go.", type: "adventure" }
+    ]},
+  { question: "When you’re tired, how do you hit the reset button?", answers: [
+      { text: "Spend quiet time doing absolutely nothing — just being still.", type: "relax" },
+      { text: "Eat something you love and soak in that happy feeling.", type: "healing" }
+    ]},
+  { question: "When do you get completely absorbed in your work or hobbies?", answers: [
+      { text: "When you dive deep into details, striving for perfection on your own.", type: "artisan" },
+      { text: "When you collaborate with others and move forward joyfully as a team.", type: "optimism" }
+    ]},
+  { question: "Plans suddenly changed! How do you switch gears?", answers: [
+      { text: "You think, 'Hey, maybe this will be fun!' — you’re flexible and excited.", type: "freedom" },
+      { text: "You feel a bit uneasy and take time to carefully plan your next step.", type: "cautious" }
+    ]}
+];
+
+const messages = [
+  "Reading your stars…🌠",
+  "Scanning your heart…💫",
+  "Flipping through the pages of fate…📖",
+  "Please hold on a moment…🎄"
+];
+
+const resultsData = {
+  leader:{
+    title:"Leader Type",
+    description:"You’re confident and action-oriented, someone who naturally takes the lead. You have a strong sense of responsibility and can’t just walk away when someone’s in trouble. You value relationships and bring out the best in others through empathy and support.",
+    fortune:"In 2026, it’s your year to nurture ‘a new kind of trust.’ Don’t shoulder everything alone — sharing responsibilities with your team will be the key. Even if you sometimes feel tired from trying too hard, remember: asking for help is also a form of leadership. The more you trust others, the more they’ll move forward believing in you.",
+    imageUrl:"images/leader.jpg"
+  },
+  empathy:{
+    title:"Empathy Type",
+    description:"You’re deeply in tune with people’s emotions — their tears and smiles touch your heart easily. Your warmth gives others comfort and strength, helping them feel safe around you. Because you can truly connect, you build deep and meaningful bonds.",
+    fortune:"In 2026, your kindness will come full circle. There might be times you feel emotionally drained, but those are the moments to take a gentle break and treat yourself with the same care you give others. Your tenderness shines brighter when you give it back to yourself. Even after tears, your smile always returns — softer, warmer, and wiser.",
+    imageUrl:"images/empathy.jpg"
+  },
+  adventure:{
+    title:"Adventurer Type",
+    description:"You have a fearless curiosity and love exploring the unknown. You dive into new challenges with excitement, inspiring others with your courage. Sometimes you act on impulse — but that’s what makes your life thrilling and full of surprises.",
+    fortune:"In 2026, opportunities will breeze into your life like the wind. You might juggle too many dreams at once, but every misstep and success becomes part of your grand adventure map. Even the days you think you’ve failed are just chapters in your story. Your boldness will give others the courage to start their own journeys.",
+    imageUrl:"images/adventure.jpg"
+  },
+  analysis:{
+    title:"Analyst Type",
+    description:"Calm and perceptive, you see the essence of things clearly. You make smart, logical decisions based on facts and insights. You may not be the most expressive person, but your quiet judgment keeps you steady and reliable.",
+    fortune:"In 2026, you’ll learn to balance knowledge and intuition. There may be moments when you overthink and hesitate — but if something simply ‘feels right,’ trust that instinct. Unexpected luck often arrives beyond logic. Your calmness will help you recognize those intuitive sparks when they appear.",
+    imageUrl:"images/analysis.jpg"
+  },
+  healing:{
+    title:"Healer Type",
+    description:"You have a peaceful, soothing presence that gently comforts others. People feel safe and calm around you. With your empathy and patience, you help maintain harmony wherever you go.",
+    fortune:"In 2026, it’s time for *you* to be healed. After years of caring for others, your heart may be quietly asking for rest. Breathe in nature, surround yourself with your favorite scents — such quiet moments will invite happiness. Your smile alone can heal the world around you.",
+    imageUrl:"images/healing.jpg"
+  },
+  artisan:{
+    title:"Artisan Type",
+    description:"You’re a steady, hard-working perfectionist who takes pride in every detail. People may call you stubborn, but that’s just your deep sense of conviction — and the reason others trust you.",
+    fortune:"In 2026, your persistence will finally pay off. The small, honest efforts you’ve built up will take visible shape. Still, when perfection feels heavy, tell yourself, ‘Good enough for today.’ Staying patient and consistent will plant the best seeds of luck — and the dreams you’ve grown slowly will bloom beautifully.",
+    imageUrl:"images/artisan.jpg"
+  },
+  optimism:{
+    title:"Optimist Type",
+    description:"You’re bright, positive, and bring sunshine wherever you go. You bounce back from setbacks with a cheerful ‘Oh well!’ attitude. Your spontaneity — even your occasional recklessness — is part of your charm.",
+    fortune:"In 2026, your smile will light up everyone’s world. Even if surprises or little troubles appear, you’ll shrug and say, ‘That’s life!’ Every low moment helps you understand others better. Your positivity sparks a chain reaction of happiness — you’re the sun in someone’s cloudy day.",
+    imageUrl:"images/optimism.jpg"
+  },
+  cautious:{
+    title:"Cautious Type",
+    description:"You’re a thoughtful planner who always looks one step ahead. You prefer safety and stability, guiding things to a secure finish. Though your careful nature might sometimes make you miss chances, your reliability is everyone’s anchor.",
+    fortune:"In 2026, moving slowly will actually reveal new opportunities. Your steady pace is the right one — no need to rush. Still, if perfection keeps you from starting, take just one small step. As long as you move at your own rhythm, success will naturally follow.",
+    imageUrl:"images/cautious.jpg"
+  },
+  freedom:{
+    title:"Free Spirit Type",
+    description:"You live by your own rhythm, unbound by rules or expectations. Your imagination is unique, and you bring your world wherever you go. People may see you as unpredictable, but that’s part of your natural charm.",
+    fortune:"In 2026, your creativity will bloom. Your free ideas will attract attention, and unexpected opportunities will find you. You might lose focus sometimes, but that’s okay — just follow what excites your heart. Your freedom inspires others to open their wings too.",
+    imageUrl:"images/freedom.jpg"
+  },
+  relax:{
+    title:"Laid-back Type",
+    description:"You’re calm and easygoing, always keeping a gentle pace. People around you feel relaxed just by being near you. You might move slowly at times, but that’s part of your peaceful charm.",
+    fortune:"In 2026, your slow-and-steady pace will become your greatest strength. Even when the world feels rushed, stick to your rhythm. You’ll notice little joys others miss. Don’t force yourself to cheer up on gloomy days — just take it easy. Before you know it, you’ll find yourself moving forward again.",
+    imageUrl:"images/relax.jpg"
+  }
+};
+
+
+    let currentQuestionIndex = 0;
+    let userScores = { empathy:0, leader:0, analysis:0, adventure:0, relax:0, healing:0, artisan:0, optimism:0, freedom:0, cautious:0 };
+
+    const questionEl = document.getElementById('question');
+    const answersEl = document.getElementById('answers');
+    const quizContentEl = document.getElementById('quiz-content');
+    const resultContainerEl = document.getElementById('result-container');
+    const loadingContainerEl = document.getElementById('loading-container');
+    const progressBarEl = document.getElementById('progress-bar');
+    const progressTextEl = document.getElementById('progress-text');
+    const progressSectionEl = document.getElementById('progress-section');
+
+    function loadQuestion(){
+      if(currentQuestionIndex<quizData.length){
+        updateProgress();
+        const current = quizData[currentQuestionIndex];
+        questionEl.innerText = current.question;
+        answersEl.innerHTML = '';
+        current.answers.forEach(ans=>{
+          const btn = document.createElement('button');
+          btn.innerText = ans.text;
+          btn.className = "answer-btn bg-gray-100 p-4 rounded-lg text-gray-800 text-lg leading-snug hover:bg-yellow-200 transition-all shadow-sm";
+          btn.onclick = (e)=>selectAnswer(ans.type, e.currentTarget);
+          answersEl.appendChild(btn);
+        });
+      } else startResultSequence();
+    }
+
+    function selectAnswer(type,btn){
+      const buttons = answersEl.querySelectorAll('.answer-btn');
+      buttons.forEach(b=>b.classList.add('disabled'));
+      btn.classList.add('selected');
+      if(userScores.hasOwnProperty(type)) userScores[type]++;
+      setTimeout(()=>{currentQuestionIndex++; loadQuestion();},500);
+    }
+
+    function updateProgress(){
+      const progress = (currentQuestionIndex/quizData.length)*100;
+      progressBarEl.style.width = progress+'%';
+      progressTextEl.innerText=`${currentQuestionIndex+1} / ${quizData.length}`;
+    }
+
+    function startResultSequence(){
+      quizContentEl.classList.add('hidden');
+      progressSectionEl.classList.add('hidden');
+      loadingContainerEl.classList.remove('hidden');
+      let i=0;
+      const loadingText=loadingContainerEl.querySelector('p');
+      const interval=setInterval(()=>{loadingText.innerHTML=messages[i%messages.length]; i++;},1500);
+      setTimeout(()=>{
+        clearInterval(interval);
+        showResult();
+      },5000);
+    }
+
+    function showResult() {
+    // 🌿 修正版：ランダム補正を追加
+    let resultType = '';
+    let max = -1;
+    for (const t in userScores) {
+      if (userScores[t] > max) {
+        max = userScores[t];
+        resultType = t;
+      }
+    }
+
+    // 🔸同点または低スコア時のランダム補正
+    const maxScoreTypes = Object.keys(userScores).filter(t => userScores[t] === max);
+    if (maxScoreTypes.length > 1 || max <= 1) {
+      const randomIndex = Math.floor(Math.random() * maxScoreTypes.length);
+      resultType = maxScoreTypes[randomIndex];
+    }
+
+    // 🔹結果を表示
+    const r = resultsData[resultType];
+    document.getElementById('result-title').innerText = r.title;
+    document.getElementById('result-image').src = r.imageUrl;
+    document.getElementById('result-image').alt = r.title;
+    document.getElementById('result-description').innerText = r.description;
+    document.getElementById('result-message').innerText = r.fortune;
+
+    // 🔹表示切り替え
+    loadingContainerEl.classList.add('hidden');
+    resultContainerEl.classList.remove('hidden');
+  }
+
+  // 🌟最初の質問を読み込む（これを残すのが重要！）
+  if (quizContentEl) loadQuestion();
+
+}); // ←ここでイベント全体を閉じます（重要）
+</script>
+
+</body>
+</html>

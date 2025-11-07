@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device‑width, initial-scale=1.0">
+  <title>Greeting Card</title>
+  
+<!-- よくある質問の回答が開くようにするためのjsコード -->
+<script src="https://cdn.tailwindcss.com"></script> 
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- /* Google Fonts 読み込み（HTMLの<head>に追加してください） -->
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+
+ <!--ファビコン-->
+<link rel="icon" type="image/svg" href="images/my-favicon.png">
+
+
+<!--リセットCSS-->
+<link rel="stylesheet" href="https://unpkg.com/ress/dist/re
+ss.min.css">
+
+<!--オリジナルCSS-->
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <h1 class="logo">Greeting Card</h1>
+      <nav class="global-nav">
+        <ul>
+          <li><a href="#">TOP</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#about">ABOUT</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+   <!-- メイン -->
+  <main class="top-page">
+
+<!-- クリスマスツリー/セクション -->
+    <h1>Merry Christmas and Happy New Year</h1>
+
+<div class="tree-container">
+  <!-- ツリーイラスト -->
+  <img src="images/tree.jpg" alt="tree">
+
+  <!-- 箱イラスト1 -->
+  <div class="icon box1" style="--i:1;">
+    <img src="images/box1.png" alt="box1">
+    <span class="tooltip">Wonderful!</span>
+  </div>
+
+  <!-- 箱イラスト2 -->
+  <div class="icon box2" style="--i:2;">
+    <img src="images/box2.png" alt="box2">
+    <span class="tooltip">superb!</span>
+  </div>
+
+  <!-- 箱イラスト3 -->
+  <div class="icon box3" style="--i:3;">
+    <img src="images/box3.png" alt="box3">
+    <span class="tooltip">Excellent!</span>
+  </div>
+
+  <!-- 箱イラスト4 -->
+  <div class="icon box4" style="--i:4;">
+    <img src="images/box4.png" alt="box4">
+    <span class="tooltip"> Fantastic!</span>
+  </div>
+
+  <!-- 箱イラスト5 -->
+  <div class="icon box5" style="--i:5;">
+    <img src="images/icon-box1.png" alt="box5">
+    <span class="tooltip">Amazing!</span>
+  </div>
+
+  <!-- 箱イラスト6 -->
+  <div class="icon box6" style="--i:6;">
+    <img src="images/icon-box2.png" alt="box6">
+    <span class="tooltip">thrilled!</span>
+  </div>
+
+  <!-- 箱イラスト7 -->
+  <div class="icon box7" style="--i:7;">
+    <img src="images/icon-box3.png" alt="box7">
+    <span class="tooltip">Great!</span>
+  </div>
+
+  <!-- 箱イラスト8 -->
+  <div class="icon box8" style="--i:8;">
+    <img src="images/box5.png" alt="box8">
+    <span class="tooltip">Brilliant!</span>
+  </div>
+
+   <!-- 箱イラスト9 -->
+  <div class="icon box9" style="--i:9;">
+    <img src="images/box6.png" alt="box9">
+    <span class="tooltip">Outstanding!</span>
+  </div>
+
+   <!-- 箱イラスト10 -->
+  <div class="icon box10" style="--i:10">
+    <img src="images/icon-box4.png" alt="box10">
+    <span class="tooltip">Awesome!</span>
+  </div>
+
+   <!-- サンタのイラスト11 -->
+  <div class="icon box11" style="--i:11">
+    <img src="images/santaclaus.png" alt="santa">
+    <span class="tooltip">Ho-ho-ho!</span>
+  </div>
+
+   <!-- 星1 -->
+  <div class="icon box12" style="--i:12">
+    <img src="images/star1.png" alt="star1">
+    <span class="tooltip">Yay!</span>
+  </div>
+
+   <!-- 星2 -->
+  <div class="icon box13" style="--i:13">
+    <img src="images/star2.png" alt="star2">
+    <span class="tooltip">For you!</span>
+  </div>
+
+   <!-- 星3 -->
+  <div class="icon box14" style="--i:14">
+    <img src="images/star3.png" alt="star3">
+    <span class="tooltip">“Shiny!</span>
+  </div>
+
+   <!-- 星4 -->
+  <div class="icon box15" style="--i:15">
+
+    <img src="images/star4.png" alt="star4">
+    <span class="tooltip">Love it!</span>
+  </div>
+  </div><!-- tree-container -->
+ 
+<!-- AI Fortune Teller Section -->
+<section id="fortune" class="text-center my-16 relative overflow-hidden" style="background-color: #5f9ea0; padding: 4rem 1rem;">
+  <h2 class="text-3xl md:text-4xl font-bold mb-4 text-yellow-500">
+    🔮 AI Fortune Teller:<br>Discover Your True Self and the Year to Come
+  </h2>
+  <p class="text-gray-800 italic text-lg md:text-xl mb-6 leading-relaxed">
+    As the old saying *almost* goes: “Sometimes it hits, sometimes it’s just AI.”<br>
+    Take it lightly and enjoy the fun of digital destiny!
+  </p>
+
+  <a href="fortune.html"
+     class="inline-block bg-yellow-400 text-gray-800 font-semibold py-3 px-6 rounded-full shadow-md hover:bg-yellow-300 hover:scale-105 transition transform relative z-10">
+     ✨ Try the AI Fortune Teller ✨
+  </a>
+
+  <!-- Canvas for Snow -->
+  <canvas id="snowCanvas" class="absolute top-0 left-0 w-full h-full pointer-events-none" style="z-index:0;"></canvas>
+</section>
+
+<script>
+// --- Colorful Snow Animation ---
+const canvas = document.getElementById('snowCanvas');
+const ctx = canvas.getContext('2d');
+
+let width = canvas.width = canvas.offsetWidth;
+let height = canvas.height = canvas.offsetHeight;
+
+window.addEventListener('resize', () => {
+  width = canvas.width = canvas.offsetWidth;
+  height = canvas.height = canvas.offsetHeight;
+});
+
+// Snowflake class
+class Snowflake {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.radius = Math.random() * 4 + 2; // size
+    this.speedY = Math.random() * 1.5 + 0.5;
+    this.speedX = Math.random() * 1 - 0.5;
+    this.opacity = Math.random() * 0.5 + 0.5;
+    // Random color: white, light blue, yellow
+    const colors = ['rgba(255,255,255,', 'rgba(173,216,230,', 'rgba(255,255,150,'];
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+  }
+  update() {
+    this.y += this.speedY;
+    this.x += this.speedX;
+    if (this.y > height) this.y = 0;
+    if (this.x > width) this.x = 0;
+    if (this.x < 0) this.x = width;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = this.color + this.opacity + ')';
+    ctx.fill();
+  }
+}
+
+// Create snowflakes
+const numFlakes = 120;
+const flakes = [];
+for (let i = 0; i < numFlakes; i++) {
+  flakes.push(new Snowflake());
+}
+
+// Animation loop
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+  flakes.forEach(f => {
+    f.update();
+    f.draw();
+  });
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+
+
+<style>
+/* --- Snow Animation (Pop & Visible) --- */
+.snow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(200, 220, 255, 0.9) 1px, transparent 1px),
+                    radial-gradient(rgba(220, 240, 255, 0.8) 1.5px, transparent 1.5px),
+                    radial-gradient(rgba(255, 255, 255, 0.8) 2px, transparent 2px);
+  background-size: 40px 40px, 60px 60px, 80px 80px;
+  animation: snowFall 15s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes snowFall {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+ </style>
+
+
+ <!--よくある質問 -->
+   <section id="faq" class="max-w-3xl mx-auto">
+  <div class="text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold mb-2">Christmas FAQ</h2>
+    <!-- &#11088; が ⭐（U+2B50）に対応 -->
+    <p class="text-gray-700 italic text-lg md:text-xl font-medium leading-snug">
+  &#11088; A not-so-serious guide to the season that sparkles &#11088;
+</p>
+  </div>
+            <div class="space-y-4">
+                <div class="bg-gray-50 rounded-lg" x-data="{ open: false }">
+                    <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold p-6">
+                        <span>How does Santa visit every house in one night? Is his sleigh a time machine? </span>
+                        <svg class="w-6 h-6 transition-transform" :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="open" x-transition class="p-6 pt-0 text-gray-700 text-base md:text-lg leading-relaxed">
+                        <p>Mostly, it’s an elite team of reindeer powered by highly caffeinated gingerbread.
+                        Rudolph’s nose isn’t just a light—it’s a Warp-Speed GPS.<br>
+                        Also, he only counts the “Good” children, which saves a surprising amount of time.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg" x-data="{ open: false }">
+                    <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold p-6">
+                        <span> How does Santa keep track of who’s naughty or nice?</span>
+                        <svg class="w-6 h-6 transition-transform" :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="open" x-transition class="p-6 pt-0 text-gray-700 text-base md:text-lg leading-relaxed">
+                        <p>He does have a massive, cloud-based AI system that monitors… just kidding!
+                        It’s actually a simple, low-tech method: he listens to what parents say when they think their kids aren’t listening.<br>
+                        The “Nice List” is largely powered by parental hope and a touch of holiday denial.
+                        </p>
+                    </div>
+                </div>
+                 <div class="bg-gray-50 rounded-lg" x-data="{ open: false }">
+                    <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold p-6">
+                        <span>Why do we eat turkey on Christmas? Is it required by law? </span>
+                        <svg class="w-6 h-6 transition-transform" :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="open" x-transition class="p-6 pt-0 text-gray-700 text-base md:text-lg leading-relaxed">
+                        <p>Because the turkey is the official bird of “Oh my gosh, that’s too much food!”<br>
+                        Its size perfectly captures the holiday spirit of joyful excess.<br>
+                        Chicken is too casual; the turkey proudly declares, “This is a major event.”</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg" x-data="{ open: false }">
+                    <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold p-6">
+                        <span>When is the right time to take down the decorations?</span>
+                        <svg class="w-6 h-6 transition-transform" :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="open" x-transition class="p-6 pt-0 text-gray-700 text-base md:text-lg leading-relaxed">
+                        <p>Technically, after New Year’s Day.<br>
+                         Realistically, it’s the moment you start tripping over the giant inflatable snowman in your hallway.<br>
+                         If you leave them up until March, congratulations—you’ve simply become a “Year-Round Enthusiast” (or an unshakable optimist).</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg" x-data="{ open: false }">
+                    <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold p-6">
+                        <span>What should I leave for Santa besides milk and cookies? </span>
+                        <svg class="w-6 h-6 transition-transform" :class="{ 'transform rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="open" x-transition class="p-6 pt-0 text-gray-700 text-base md:text-lg leading-relaxed">
+                        <p> Santa has seen it all.<br>
+                         He truly appreciates useful gifts—noise-canceling headphones (for the sleigh ride), low-carb snacks (he’s watching his figure),<br>
+                         or just a note confirming that you cleaned the chimney.<br>
+                         He really dislikes soot stains on the suit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+<!-- ABOUT セクション -->
+<section id="about"> <div class="wrapper"> <h1>ABOUT Christmas</h1> <h2> A Gentle Reminder That Logic Takes a Holiday Too</h2> <p class="text-gray-800 text-lg md:text-xl leading-relaxed"> Christmas is that magical time of year when we celebrate the fact that it's perfectly normal to hang sparkling things on trees inside our homes. It’s the season when we collectively agree to ignore diet plans, trade logic for logistics (Santa has quite the workload), and compete in the noble art of gift-wrapping.<br><br> At its heart, Christmas is simply a beautiful excuse to gather with people we love, eat too much, and see whether a small, decorative piece of mistletoe can really rescue us from an awkward conversation.<br> 
+</p> 
+</div> <!--wrapper--> 
+  
+
+
+  <!-- The Water’s Trace カード -->
+  <div class="card-wrapper">
+    <div class="card">
+      <img src="images/water-trace-en.jpg" alt="The Water’s Trace">
+      <h3>Enjoy the short story (10-minute read).</h3>
+      <a href="https://yoikonoyo.github.io/waters-trace/" target="_blank">Read Now</a>
+    </div>
+  </div>
+  </section>
+  </main>
+
+<!-- Footer -->
+<footer class="site-footer"> <div class="inner"> 
+  <p>© 2025 Yoiko no “Yo” All rights reserved.</p> 
+</div> 
+</footer>
+
+<style>
+/* --- 単独カード用スタイル --- */
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #f5f5f7; /* 淡いグレーで上品に */
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 350px;
+  padding: 1rem 1rem 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  object-fit: cover;
+}
+
+.card h3 {
+  font-size: 1rem;
+  color: #333;
+  margin: 0.5rem 0 1rem;
+}
+
+.card a {
+  display: inline-block;
+  background: #5a8d7c; /* 他の緑より落ち着いたトーン */
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background 0.25s ease;
+}
+
+.card a:hover {
+  background: #4b7a6c;
+}
+
+</style>
+
+</body>
+</html>
