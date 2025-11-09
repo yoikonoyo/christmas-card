@@ -579,16 +579,14 @@ section[id] {
 }
 
 
-/* スマホ対応 */
+/* =====================================
+   📱 スマホ（幅768px以下）用の位置調整
+   ===================================== */
 @media (max-width: 768px) {
   .site-header .inner {
     flex-direction: column;
   }
-
-  .qr-box {
-    display: none;
-  }
-  
+ 
 /*  .hero {
   padding-bottom: 100px;  hero下にスペースを確保 
 }*/
@@ -695,6 +693,7 @@ section[id] {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
 
 
