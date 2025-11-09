@@ -545,6 +545,10 @@ h1, h2 {
   text-align: center;
 }
 
+/* --- 固定ヘッダー分の余白補正 --- */
+section[id] {
+  scroll-margin-top: 100px; /* ヘッダーの高さに合わせて調整 */
+}
 
 
 /* スマホ対応 */
@@ -658,6 +662,7 @@ h1, h2 {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
 
 
