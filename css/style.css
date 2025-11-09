@@ -197,13 +197,13 @@ body {
 .box4 { top: 90%; left: 19%; }
 .box5 { top: 79.5%; left: 73%; }
 .box6 { top: 63.9%; left: 66%; }
-.box7 { top: 63.5%; left: 23%; }
+.box7 { top: 58%; left: 14%; }
 .box8 { top: 90%; left: 3%; }
 .box9 { top: 91%; left: 72%; }
-.box10 { top: 47%; left: 58%; }
+.box10 { top: 41%; left: 63%; }
 .box11 { top: 15%; left: 80%; }
 .box12 { top: 45%; left: 29%; }
-.box13 { top: 16%; left: 7%; }
+.box13 { top: 14%; left: 5%; }
 .box14 { top: 25%; left: 52%; }
 .box15 { top: 50%; left: 24%; }
 
@@ -550,13 +550,13 @@ h1, h2 {
   .box5 { top: 77%; left: 70%; }
   .box6 { top: 61%; left: 63%; }
   
-  .box7 { top: 61%; left: 18%; }
+  .box7 { top: 58%; left: 2%; }
   .box8 { top: 89%; left: 79%; }
   .box9 { top: 90%; left: 63%; }
-  .box10 { top: 44%; left: 53%; }
+  .box10 { top: 34%; left: 69%; }
   .box11 { top: 12%; left: 75%; }
   .box12 { top: 42%; left: 21%; }
-  .box13 { top: 13%; left: 3%; }
+  .box13 { top: 16%; left: 2%; }
   .box14 { top: 24%; left: 50%; }
   .box15 { top: 48%; left: 9%; }
 
@@ -615,4 +615,5 @@ h1, h2 {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
