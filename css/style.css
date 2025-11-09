@@ -35,74 +35,104 @@ body {
   margin: 0 auto;
 }
 
-/* ヘッダー */
+/* ====== ヘッダー ====== */
 .site-header {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
-  background: linear-gradient(to bottom right, #faf6f1, #f1ede6);
-  color: #fff;
+  background: linear-gradient(to right, #fff8e7, #eaf7ea);
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 0.8rem 0;
 }
 
+/* 内側中央寄せ */
 .site-header .inner {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 1rem 0;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
+/* タイトル */
 .logo {
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 700;
   letter-spacing: 1px;
+  color: #2e8b57;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
 }
 
+/* ナビ */
 .global-nav ul {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 .global-nav a {
-  color: #fff;
+  color: #2e8b57;
   text-decoration: none;
   font-weight: 600;
+  position: relative;
   transition: color 0.3s;
 }
 
-.global-nav a:hover {
-  color: #ffd700;
+.global-nav a::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: #b22222;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
 }
 
-/* QRコード配置 */
-/* QRコード右上 */
+.global-nav a:hover {
+  color: #b22222;
+}
+
+.global-nav a:hover::after {
+  width: 100%;
+}
+
+/* QRコード */
 .qr-link {
-  display: block;
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 50px;  /* 小さめサイズ */
+  width: 50px;
   height: 50px;
-  z-index: 1100; /* ヘッダーより前面に */
+  border: 2px solid rgba(255,255,255,0.8);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  background: rgba(255,255,255,0.2);
+  z-index: 1100;
 }
 
 .qr-link img {
   width: 100%;
   height: 100%;
   display: block;
+  border-radius: 4px;
 }
 
-/* スマホ表示でも小さく残す場合 */
+/* メディアクエリ：スマホ */
 @media (max-width: 768px) {
   .qr-link {
-    width: 40px;  /* 少し縮小 */
+    width: 40px;
     height: 40px;
-    top: 8px;
-    right: 8px;
   }
 }
+
 
 /* メイン余白 */
 .top-page {
@@ -693,6 +723,7 @@ section[id] {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
 
 
