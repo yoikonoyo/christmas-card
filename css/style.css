@@ -200,7 +200,7 @@ body {
 .box7 { top: 56%; left: 10%; }
 .box8 { top: 90%; left: 3%; }
 .box9 { top: 91%; left: 72%; }
-.box10 { top: 41%; left: 44%; }
+.box10 { top: 41%; left: 63%; }
 .box11 { top: 15%; left: 80%; }
 .box12 { top: 45%; left: 29%; }
 .box13 { top: 14%; left: 5%; }
@@ -615,6 +615,7 @@ h1, h2 {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
 
 
