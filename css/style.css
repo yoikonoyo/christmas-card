@@ -197,10 +197,10 @@ body {
 .box4 { top: 90%; left: 19%; }
 .box5 { top: 79.5%; left: 73%; }
 .box6 { top: 63.9%; left: 66%; }
-.box7 { top: 58%; left: 14%; }
+.box7 { top: 48%; left: %; }
 .box8 { top: 90%; left: 3%; }
 .box9 { top: 91%; left: 72%; }
-.box10 { top: 41%; left: 63%; }
+.box10 { top: 35%; left: 65%; }
 .box11 { top: 15%; left: 80%; }
 .box12 { top: 45%; left: 29%; }
 .box13 { top: 14%; left: 5%; }
@@ -615,5 +615,6 @@ h1, h2 {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
 
