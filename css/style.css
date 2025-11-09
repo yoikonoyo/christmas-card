@@ -581,6 +581,11 @@ section[id] {
   .site-header .inner {
     flex-direction: column;
   }
+
+  .qr-box {
+    display: none;
+  }
+  
 /*  .hero {
   padding-bottom: 100px;  hero下にスペースを確保 
 }*/
@@ -687,6 +692,7 @@ section[id] {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
 
 
