@@ -197,7 +197,7 @@ body {
 .box4 { top: 90%; left: 19%; }
 .box5 { top: 79.5%; left: 73%; }
 .box6 { top: 63.9%; left: 66%; }
-.box7 { top: 56.5%; left: 133%; }
+.box7 { top: 56.5%; left: 13%; }
 .box8 { top: 90%; left: 3%; }
 .box9 { top: 91%; left: 72%; }
 .box10 { top: 41%; left: 65%; }
@@ -615,6 +615,7 @@ h1, h2 {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
 
 
