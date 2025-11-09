@@ -553,7 +553,7 @@ h1, h2 {
   .box7 { top: 55%; left: 2%; }
   .box8 { top: 89%; left: 79%; }
   .box9 { top: 90%; left: 63%; }
-  .box10 { top: 32%; left: 71%; }
+  .box10 { top: 35%; left: 71%; }
   .box11 { top: 12%; left: 75%; }
   .box12 { top: 42%; left: 21%; }
   .box13 { top: 16%; left: 2%; }
@@ -615,6 +615,7 @@ h1, h2 {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
 
 
