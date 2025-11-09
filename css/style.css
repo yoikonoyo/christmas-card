@@ -503,6 +503,49 @@ h1, h2 {
   z-index: 0;
 }
 
+/* --- Section Divider (Cute & Elegant Version) --- */
+.section-divider {
+  position: relative;
+  text-align: center;
+  background: transparent;
+}
+
+.divider-line {
+  width: 180px;
+  height: 2px;
+  border-top: 2px dotted #dcbf80;
+  margin: 0 auto;
+  position: relative;
+}
+
+.divider-line::before,
+.divider-line::after {
+  content: "✿";
+  position: absolute;
+  top: -10px;
+  font-size: 0.9rem;
+  color: #d6a35c;
+}
+
+.divider-line::before {
+  left: -20px;
+}
+
+.divider-line::after {
+  right: -20px;
+}
+
+/* テキスト中央寄せ＋枠なし */
+.divider-text {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #a67b5b;
+  font-style: italic;
+  font-family: cursive;
+  text-align: center;
+}
+
+
 
 /* スマホ対応 */
 @media (max-width: 768px) {
@@ -617,47 +660,7 @@ h1, h2 {
 }
 
 
-/* --- Section Divider (Cute & Elegant Version) --- */
-.section-divider {
-  position: relative;
-  text-align: center;
-  background: transparent;
-}
 
-.divider-line {
-  width: 180px;
-  height: 2px;
-  border-top: 2px dotted #dcbf80;
-  margin: 0 auto;
-  position: relative;
-}
-
-.divider-line::before,
-.divider-line::after {
-  content: "✿";
-  position: absolute;
-  top: -10px;
-  font-size: 0.9rem;
-  color: #d6a35c;
-}
-
-.divider-line::before {
-  left: -20px;
-}
-
-.divider-line::after {
-  right: -20px;
-}
-
-/* テキスト中央寄せ＋枠なし */
-.divider-text {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #a67b5b;
-  font-style: italic;
-  font-family: cursive;
-  text-align: center;
-}
 
 
 
