@@ -1,17 +1,28 @@
 @charset "UTF-8";
 
-/* tree全体をheaderの下に自然に配置 */
+/* =====================================
+   🌳 tree-container 本体（PC含む一般表示）
+   ===================================== */
 .tree-container {
   position: relative;
   width: 100%;
-  max-width: 600px;      /* PC表示時の最大幅 */
-  margin: 100px auto 60px; /* 上: header分+自然な余白 下: 次セクションとの間 */
+  max-width: 600px;       /* PC表示時の最大幅 */
+  margin: 120px auto 30px; /* 上: headerとの距離を少し広く、下: 次セクションと近づける */
   border: 4px solid #c7d8cc;
   border-radius: 20px;
   background: #ffffff;
   box-shadow: 0 8px 16px rgba(120, 150, 120, 0.15);
   overflow: hidden;
   text-align: center;
+  padding-bottom: 20px;  /* 枠内の文字・飾りのスペース */
+}
+
+/* 枠内の文字 */
+.tree-message {
+  position: relative;
+  top: 0;               /* PCでは枠内の中央付近 */
+  margin-top: 1rem;
+  font-size: 1rem;
 }
 
 /* ツリー画像 */
@@ -670,11 +681,7 @@ section[id] {
     justify-content: center;
     gap: 1rem;
   }
-  .tree-container {
-    max-width: 100%;
-  }
-
-  #snowCanvas {
+   #snowCanvas {
   top: -100px;   /* 上方向に余裕 */
   bottom: -100px; /* 下方向に余裕 */
 }
@@ -683,17 +690,27 @@ section[id] {
     font-size: 1.6rem;
   }  
 
-  /* アイコン位置を調整（見栄え重視で再配置） */
-  .box1 { top: 90%; left: 20%; }
-  .box2 { top: 89%; left: 48%; }
-  .box3 { top: 90%; left: 33%; }
-  .box4 { top: 90%; left: 1%; }
-  .box5 { top: 77%; left: 70%; }
-  .box6 { top: 61%; left: 63%; }
-  
+  .tree-container {
+    max-width: 100%;
+    margin: 100px auto 20px; /* 上を少し狭め、下を少し狭く */
+    padding-bottom: 15px;     /* 枠内の文字や飾りのスペースを微調整 */
+  }
+
+  .tree-message {
+    top: 10px;               /* 文字をツリー画像の下にずらす */
+    font-size: 0.95rem;      /* 小さい画面でも読みやすく */
+  }
+
+  /* アイコンや飾りをスマホ用に微調整（例） */
+  .box1 { top: 88%; left: 20%; }
+  .box2 { top: 87%; left: 48%; }
+  .box3 { top: 88%; left: 33%; }
+  .box4 { top: 88%; left: 1%; }
+  .box5 { top: 76%; left: 70%; }
+  .box6 { top: 60%; left: 63%; }
   .box7 { top: 53%; left: 2%; }
-  .box8 { top: 89%; left: 79%; }
-  .box9 { top: 90%; left: 63%; }
+  .box8 { top: 87%; left: 79%; }
+  .box9 { top: 88%; left: 63%; }
   .box10 { top: 32%; left: 70%; }
   .box11 { top: 12%; left: 75%; }
   .box12 { top: 43%; left: 23%; }
@@ -701,7 +718,7 @@ section[id] {
   .box14 { top: 24%; left: 50%; }
   .box15 { top: 44%; left: 7%; }
 
-  /* アイコンを少し小さく */
+  /* アイコンサイズを少し小さく */
   .icon {
     width: 90px;
     height: 90px;
@@ -769,6 +786,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
