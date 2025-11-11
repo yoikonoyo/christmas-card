@@ -173,7 +173,7 @@ body {
   animation: twinkle 2s infinite alternate ease-in-out;
 }
 
-/* ふわっと点滅するアニメーション */
+/* ツリー下のふわっと点滅文字 */
 @keyframes twinkle {
   from { opacity: 0.5; transform: scale(1); }
   to { opacity: 1; transform: scale(1.05); }
@@ -754,6 +754,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
