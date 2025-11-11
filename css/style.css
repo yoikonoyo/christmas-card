@@ -275,21 +275,21 @@ body {
 }
 
 /* アイコン位置（微調整） */
-.box1 { top: 75%; left: 30%; }
-.box2 { top: %; left: 60%; }
-.box3 { top: 90%; left: 40%; }
-.box4 { top: 75%; left: 19%; }
-.box5 { top: 64%; left: 73%; }
-.box6 { top: 63.9%; left: 66%; }
+.box1 { top: 85%; left: 30%; }
+.box2 { top: 85%; left: 60%; }
+.box3 { top: 85%; left: 40%; }
+.box4 { top: 85%; left: 19%; }
+.box5 { top: 75%; left: 73%; }
+.box6 { top: 60%; left: 66%; }
 .box7 { top: 53%; left: 14%; }
-.box8 { top: 75%; left: 3%; }
-.box9 { top: 75%; left: 72%; }
-.box10 { top: 41%; left: 65%; }
+.box8 { top: 85%; left: 3%; }
+.box9 { top: 85%; left: 72%; }
+.box10 { top: 39%; left: 65%; }
 .box11 { top: 1%; left: 80%; }
-.box12 { top: 28%; left: 29%; }
+.box12 { top: 39%; left: 29%; }
 .box13 { top: 14%; left: 5%; }
-.box14 { top: 25%; left: 52%; }
-.box15 { top: 25%; left: 24%; }
+.box14 { top: 23%; left: 52%; }
+.box15 { top: 30%; left: 20%; }
 
 
 /* FAQセクション */
@@ -754,6 +754,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
