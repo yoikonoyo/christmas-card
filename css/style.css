@@ -1,6 +1,34 @@
 @charset "UTF-8";
 
+
+
+/* メインメッセージ */
+.main-message {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #b22222;
+  font-family: "Times New Roman", serif;
+  font-weight: bold;
+  margin-top: calc(30vh - 150px); /* headerとの距離はこのまま良いとのことなので維持 */
+}
+
+/* tree全体を確実に上げる */
+.tree-container {
+  position: relative;
+  top: -37px; /* ← ここを変えると確実に上に動きます。例えば -60 〜 -100 で調整 */
+  text-align: center;
+}
+
+.tree-container img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
 /* 全体のリセット */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -132,7 +160,6 @@ body {
     height: 40px;
   }
 }
-
 
 /* メイン余白 */
 .top-page {
@@ -302,14 +329,15 @@ body {
 }
 
 #about h1 {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
   color: #b22222;
   margin-bottom: 0.5rem;
   letter-spacing: 1px;
 }
 
 #about h2 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #2e8b57;
   margin-bottom: 2rem;
   font-weight: 600;
@@ -386,8 +414,10 @@ body {
 }
 
 /* テキストと見出しの彩度をおさえてナチュラルに */
+
 h1, h2 {
   color: #3d5b3b;
+  /* font-weight: bold; */
 }
 
 .meguru-page > h1 {
@@ -609,14 +639,13 @@ section[id] {
 }
 
 
-/* =====================================
-   📱 スマホ（幅768px以下）用の位置調整
-   ===================================== */
+/* スマホ対応 */
 @media (max-width: 768px) {
   .site-header .inner {
     flex-direction: column;
   }
- 
+
+  
 /*  .hero {
   padding-bottom: 100px;  hero下にスペースを確保 
 }*/
@@ -640,6 +669,9 @@ section[id] {
     font-size: 1.6rem;
   }  
 }
+
+
+
 /* =====================================
    📱 スマホ（幅768px以下）用の位置調整
    ===================================== */
@@ -650,7 +682,7 @@ section[id] {
     margin-top: 40px;
   }
 
-  /* アイコン位置を調整（見栄え重視で再配置） */
+   /* アイコン位置を調整（見栄え重視で再配置） */
   .box1 { top: 90%; left: 20%; }
   .box2 { top: 89%; left: 48%; }
   .box3 { top: 90%; left: 33%; }
