@@ -1,60 +1,5 @@
 @charset "UTF-8";
 
-/* =====================================
-   🌳 tree-container 本体（PC含む一般表示）
-   ===================================== */
-.tree-container {
-  position: relative;
-  width: 100%;
-  max-width: 600px;       /* PC表示時の最大幅 */
-  margin: 120px auto 30px; /* 上: headerとの距離を少し広く、下: 次セクションと近づける */
-  border: 4px solid #c7d8cc;
-  border-radius: 20px;
-  background: #ffffff;
-  box-shadow: 0 8px 16px rgba(120, 150, 120, 0.15);
-  overflow: hidden;
-  text-align: center;
-  padding-bottom: 20px;  /* 枠内の文字・飾りのスペース */
-}
-
-/* 枠内の文字 */
-.tree-message {
-  position: relative;
-  top: 0;               /* PCでは枠内の中央付近 */
-  margin-top: 1rem;
-  font-size: 1rem;
-}
-
-/* ツリー画像 */
-.tree-container img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ツリー下のメッセージ */
-.tree-message {
-  font-family: "Comic Sans MS", "Segoe UI", cursive;
-  font-size: 1.2rem;
-  color: #b22222;
-  margin-top: 1rem;
-  animation: twinkle 2s infinite alternate ease-in-out;
-}
-
-/* ふわっと点滅するアニメーション */
-@keyframes twinkle {
-  from { opacity: 0.5; transform: scale(1); }
-  to { opacity: 1; transform: scale(1.05); }
-}
-
-/* tree-box */
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: "Quicksand", "Noto Sans JP", sans-serif;
   line-height: 1.7;
@@ -186,30 +131,60 @@ body {
   margin-top: 100px; /* header分のスペースを確保 */
 }
 
-/* クリスマスツリーセクション */
-/* 🎄 ツリー全体 */
+
+/* =====================================
+   🌳 tree-container 本体（PC含む一般表示）
+   ===================================== */
 .tree-container {
-  position: relative;       /* すでにあるのでそのまま */
+  position: relative;
   width: 100%;
-  max-width: 600px;         /* 最大幅 */
-  margin: 120px auto 0;     /* heroタイトルとツリーの間に余白を作る */
-  border: 4px solid #2e8b57;
+  max-width: 600px;       /* PC表示時の最大幅 */
+  margin: 120px auto 30px; /* 上: headerとの距離を少し広く、下: 次セクションと近づける */
+  border: 4px solid #c7d8cc;
   border-radius: 20px;
   background: #ffffff;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(120, 150, 120, 0.15);
   overflow: hidden;
-  margin-top: 60px;
-
-  outline: 2px dashed red;  /* 枠を確認用 */
-  z-index: 9999;            /* 手前に出す */
-  min-height: 100px;        /* 高さ0対策 */
+  text-align: center;
+  padding-bottom: 20px;  /* 枠内の文字・飾りのスペース */
 }
 
-/* ツリー画像（背景） */
+/* 枠内の文字 */
+.tree-message {
+  position: relative;
+  top: 0;               /* PCでは枠内の中央付近 */
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* ツリー画像 */
 .tree-container img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* ツリー下のメッセージ */
+.tree-message {
+  font-family: "Comic Sans MS", "Segoe UI", cursive;
+  font-size: 1.2rem;
+  color: #b22222;
+  margin-top: 1rem;
+  animation: twinkle 2s infinite alternate ease-in-out;
+}
+
+/* ふわっと点滅するアニメーション */
+@keyframes twinkle {
+  from { opacity: 0.5; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.05); }
+}
+
+/* tree-box */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* ❄️ 降る雪エフェクト */
@@ -786,6 +761,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
