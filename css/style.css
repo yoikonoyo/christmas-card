@@ -9,7 +9,7 @@
   color: #b22222;
   font-family: "Times New Roman", serif;
   font-weight: bold;
-  margin-top: calc(30vh - 150px); /* headerとの距離はこのまま良いとのことなので維持 */
+  margin-top: calc(80vh - 150px); /* headerとの距離はこのまま良いとのことなので維持 */
 }
 
 /* tree全体を確実に上げる */
@@ -755,6 +755,7 @@ section[id] {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
 
 
