@@ -754,7 +754,7 @@ section[id] {
 /* --- スマホ表示（幅768px以下）のときだけ調整 --- */
   .tree-container {
   margin: 70px auto 1px;   /* 上を広く、下を狭く */
-  padding-bottom: 20px;     /* 枠の内側を少しだけ広げる */
+  padding-bottom: 15px;     /* 枠の内側を少しだけ広げる */
 }
 
   .tree-message {
@@ -764,6 +764,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
