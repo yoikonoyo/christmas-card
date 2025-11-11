@@ -14,10 +14,7 @@
   height: auto;
 }
 
-
-
-
-/* 全体のリセット */
+/* tree-box */
 
 * {
   box-sizing: border-box;
@@ -745,6 +742,7 @@ section[id] {
   max-width: 600px;
   margin: 2rem auto;
 }
+
 
 
 
