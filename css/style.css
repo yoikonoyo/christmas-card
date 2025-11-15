@@ -682,11 +682,11 @@ section[id] {
   .box3 { top: 84%; left: 33%; }
   .box4 { top: 85%; left: 1%; }
   .box5 { top: 69%; left: 71%; }
-  .box6 { top: 51%; left: 61.5%; }
+  .box6 { top: 53%; left: 61.5%; }
   .box7 { top: 49%; left: 4%; }
   .box8 { top: 85%; left: 79%; }
   .box9 { top: 85%; left: 63%; }
-  .box10 { top: 35%; left: 70%; }
+  .box10 { top: 33%; left: 70%; }
   .box11 { top: 11%; left: 75%; }
   .box12 { top: 39%; left: 23%; }
   .box13 { top: 16%; left: 2%; }
@@ -754,6 +754,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
