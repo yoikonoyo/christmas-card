@@ -280,14 +280,14 @@ body {
 .box3 { top: 85%; left: 40%; }
 .box4 { top: 85%; left: 19%; }
 .box5 { top: 73%; left: 75%; }
-.box6 { top: 59.5%; left: 66%; }
+.box6 { top: 58%; left: 66%; }
 .box7 { top: 52%; left: 18%; }
 .box8 { top: 85%; left: 3%; }
 .box9 { top: 85%; left: 72%; }
-.box10 { top: 39%; left: 64%; }
-.box11 { top: 13%; left: 80%; }
+.box10 { top: 37%; left: 66%; }
+.box11 { top: 15%; left: 80%; }
 .box12 { top: 42%; left: 29%; }
-.box13 { top: 8%; left: 5%; }
+.box13 { top: 7%; left: 5%; }
 .box14 { top: 23%; left: 52%; }
 .box15 { top: 30%; left: 20%; }
 
@@ -681,12 +681,12 @@ section[id] {
   .box2 { top: 85%; left: 48%; }
   .box3 { top: 84%; left: 33%; }
   .box4 { top: 85%; left: 1%; }
-  .box5 { top: 71%; left: 70%; }
-  .box6 { top: 40%; left: 59%; }
-  .box7 { top: 50%; left: 3%; }
+  .box5 { top: 69%; left: 71%; }
+  .box6 { top: 40%; left: 56%; }
+  .box7 { top: 50%; left: 4%; }
   .box8 { top: 85%; left: 79%; }
   .box9 { top: 85%; left: 63%; }
-  .box10 { top: 20%; left: 70%; }
+  .box10 { top: 17.5%; left: 70%; }
   .box11 { top: 11%; left: 75%; }
   .box12 { top: 39%; left: 23%; }
   .box13 { top: 16%; left: 2%; }
@@ -754,6 +754,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
