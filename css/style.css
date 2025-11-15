@@ -682,7 +682,7 @@ section[id] {
   .box3 { top: 84%; left: 33%; }
   .box4 { top: 85%; left: 1%; }
   .box5 { top: 69%; left: 71%; }
-  .box6 { top: 40%; left: 56%; }
+  .box6 { top: 48%; left: 58%; }
   .box7 { top: 50%; left: 4%; }
   .box8 { top: 85%; left: 79%; }
   .box9 { top: 85%; left: 63%; }
@@ -754,6 +754,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
