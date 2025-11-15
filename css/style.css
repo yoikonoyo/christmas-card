@@ -280,11 +280,11 @@ body {
 .box3 { top: 85%; left: 40%; }
 .box4 { top: 85%; left: 19%; }
 .box5 { top: 73%; left: 75%; }
-.box6 { top: 57%; left: 66%; }
+.box6 { top: 59%; left: 66%; }
 .box7 { top: 52%; left: 18%; }
 .box8 { top: 85%; left: 3%; }
 .box9 { top: 85%; left: 72%; }
-.box10 { top: 38%; left: 67%; }
+.box10 { top: 38.5%; left: 67%; }
 .box11 { top: 14%; left: 80%; }
 .box12 { top: 43%; left: 29%; }
 .box13 { top: 7%; left: 5%; }
@@ -682,7 +682,7 @@ section[id] {
   .box3 { top: 84%; left: 33%; }
   .box4 { top: 85%; left: 1%; }
   .box5 { top: 69%; left: 71%; }
-  .box6 { top: 53%; left: 61.5%; }
+  .box6 { top: 54.5%; left: 62%; }
   .box7 { top: 49%; left: 4%; }
   .box8 { top: 85%; left: 79%; }
   .box9 { top: 85%; left: 63%; }
@@ -754,6 +754,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
