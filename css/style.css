@@ -157,6 +157,18 @@ body {
   font-size: 1rem;
 }
 
+/* --- メッセージの切り替え設定 --- */
+
+/* デフォルト設定（PC向け: 768px以上の画面幅） */
+/* PC用のテキストを表示し、モバイル用のテキストを非表示にする */
+.tree-message .pc-only {
+  display: inline;
+}
+.tree-message .sp-only {
+  display: none;
+}
+
+
 /* ツリー画像 */
 .tree-container img {
   width: 100%;
@@ -675,6 +687,16 @@ section[id] {
     top: 10px;               /* 文字をツリー画像の下にずらす */
     font-size: 0.95rem;      /* 小さい画面でも読みやすく */
   }
+　/* --- メッセージの切り替え設定 --- */
+  /* PC用のテキストを非表示にする */
+  .tree-message .pc-only {
+    display: none;
+  }
+  /* モバイル用のテキストを表示する */
+  .tree-message .sp-only {
+    display: inline;
+  }
+  
 
   /* アイコンや飾りをスマホ用に微調整（例） */
   .box1 { top: 85%; left: 19%; }
@@ -754,6 +776,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
