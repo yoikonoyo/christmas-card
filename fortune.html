@@ -46,7 +46,7 @@
 
 
     <!-- 🔹トップページへ戻るボタン -->
-    <a href="index.html"
+    <a href="index.html#fortune"
        class="inline-block bg-sky-400 hover:bg-sky-500 text-white font-semibold py-2 px-6 rounded-full transition-all shadow">
        Back to Christmas Page
     </a>
@@ -79,10 +79,11 @@
 ];
 
 const messages = [
-  "Reading your stars…🌠",
-  "Scanning your heart…💫",
-  "Flipping through the pages of fate…📖",
-  "Please hold on a moment…🎄"
+{ text: "Reading your stars…🌠", duration: 0 },
+  { text: "Scanning your heart…💫", duration: 1000 },
+  { text: "Flipping through the pages of fate…📖", duration: 1000 },
+  { text: "Please hold on a moment…🎄", duration: 2000 }
+
 ];
 
 const resultsData = {
@@ -191,18 +192,28 @@ const resultsData = {
       progressTextEl.innerText=`${currentQuestionIndex+1} / ${quizData.length}`;
     }
 
-    function startResultSequence(){
-      quizContentEl.classList.add('hidden');
-      progressSectionEl.classList.add('hidden');
-      loadingContainerEl.classList.remove('hidden');
-      let i=0;
-      const loadingText=loadingContainerEl.querySelector('p');
-      const interval=setInterval(()=>{loadingText.innerHTML=messages[i%messages.length]; i++;},1500);
-      setTimeout(()=>{
-        clearInterval(interval);
-        showResult();
-      },5000);
+      function startResultSequence(){
+  quizContentEl.classList.add('hidden');
+  progressSectionEl.classList.add('hidden');
+  loadingContainerEl.classList.remove('hidden');
+
+  const loadingText = loadingContainerEl.querySelector('p');
+  let i = 0;
+
+  function showNextMessage(){
+    if(i >= messages.length){
+      showResult(); // すべて表示後に結果表示
+      return;
     }
+    loadingText.innerText = messages[i].text;
+    const delay = messages[i].duration;
+    i++;
+    setTimeout(showNextMessage, delay);
+  }
+
+  // 最初のメッセージから開始
+  showNextMessage();
+}
 
     function showResult() {
     // 🌿 修正版：ランダム補正を追加
