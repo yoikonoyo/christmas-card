@@ -512,11 +512,7 @@ h1, h2 {
   animation-delay: calc(var(--i) * 0.3s);
   transition: transform 0.2s;
 }
-/* アイコン3つのサイズを小さく */
-.small-icon {
-  width: 70px !important;
-  height: auto !important;
-}
+
 .icon:hover img {
   transform: scale(1.2);
 }
@@ -702,32 +698,28 @@ section[id] {
   }
 
 
-    /* スマホのアイコン位置を調整 */
-.box1 { top: 56%; left: 22%; }
-.box2 { top: 84%; left: 50%; }
-.box3 { top: 84%; left: 64%; }
-.box4 { top: 84.5%; left: 17%; }
-.box5 { top: 71%; left: 71%; }
-.box6 { top: 56%; left: 64%; }
-.box7 { top: 81%; left: 37%; }
-.box8 { top: 84%; left: 2%; }
-.box9 { top: 84%; left: 78%; }
-.box10 { top: 36%; left: 67%; }
-.box11 { top: 11%; left: 78%; }
-.box12 { top: 23%; left: -1%; }
-.box13 { top: 42%; left: 12%; }
-.box14 { top: 23%; left: 52%; }
-.box15 { top: 9%; left: 7%; }
+  /* スマホ用にアイコンや飾りを微調整（例） */
+  .box1 { top: 85%; left: 19%; }
+  .box2 { top: 85%; left: 48%; }
+  .box3 { top: 84%; left: 33%; }
+  .box4 { top: 85%; left: 1%; }
+  .box5 { top: 69%; left: 71%; }
+  .box6 { top: 54.5%; left: 62%; }
+  .box7 { top: 49%; left: 4%; }
+  .box8 { top: 85%; left: 79%; }
+  .box9 { top: 85%; left: 63%; }
+  .box10 { top: 33%; left: 70%; }
+  .box11 { top: 11%; left: 75%; }
+  .box12 { top: 39%; left: 23%; }
+  .box13 { top: 16%; left: 2%; }
+  .box14 { top: 22%; left: 50%; }
+  .box15 { top: 36%; left: 7%; }
 
-  /* アイコンを少し小さく */
+  /* アイコンサイズを少し小さく */
   .icon {
-    width: 85px;
-    height: 85px;
+    width: 90px;
+    height: 90px;
   }
-  .small-icon {
-  width: 60px !important;
-  height: auto !important;
-}
 
   /* タイトルも少し小さく */
   .top-page > h1 {
@@ -784,78 +776,6 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
