@@ -287,21 +287,21 @@ body {
 }
 
 /* アイコン位置（微調整） */
-.box1 { top: 85%; left: 30%; }
-.box2 { top: 85%; left: 60%; }
-.box3 { top: 85%; left: 40%; }
+.box1 { top: 59%; left: 25%; }
+.box2 { top: 85%; left: 62%; }
+.box3 { top: 85%; left: 48%; }
 .box4 { top: 85%; left: 19%; }
-.box5 { top: 73%; left: 75%; }
+.box5 { top: 73.5%; left: 75%; }
 .box6 { top: 59%; left: 66%; }
-.box7 { top: 52%; left: 18%; }
-.box8 { top: 85%; left: 3%; }
-.box9 { top: 85%; left: 72%; }
-.box10 { top: 38.5%; left: 67%; }
+.box7 { top: 83%; left: 38%; }
+.box8 { top: 85%; left: 5%; }
+.box9 { top: 85%; left: 75%; }
+.box10 { top: 40.5%; left: 67%; }
 .box11 { top: 14%; left: 80%; }
-.box12 { top: 43%; left: 29%; }
+.box12 { top: 40%; left: 14%; }
 .box13 { top: 7%; left: 5%; }
 .box14 { top: 23%; left: 52%; }
-.box15 { top: 30%; left: 20%; }
+.box15 { top: 31%; left: 21%; }
 
 
 /* FAQセクション */
@@ -513,6 +513,12 @@ h1, h2 {
   transition: transform 0.2s;
 }
 
+/* アイコン3つのサイズを小さく */
+.small-icon {
+  width: 70px !important;
+  height: auto !important;
+}
+
 .icon:hover img {
   transform: scale(1.2);
 }
@@ -699,27 +705,32 @@ section[id] {
 
 
   /* スマホ用にアイコンや飾りを微調整（例） */
-  .box1 { top: 85%; left: 19%; }
-  .box2 { top: 85%; left: 48%; }
-  .box3 { top: 84%; left: 33%; }
-  .box4 { top: 85%; left: 1%; }
-  .box5 { top: 69%; left: 71%; }
-  .box6 { top: 54.5%; left: 62%; }
-  .box7 { top: 49%; left: 4%; }
-  .box8 { top: 85%; left: 79%; }
-  .box9 { top: 85%; left: 63%; }
-  .box10 { top: 33%; left: 70%; }
-  .box11 { top: 11%; left: 75%; }
-  .box12 { top: 39%; left: 23%; }
-  .box13 { top: 16%; left: 2%; }
+  .box1 { top: 56%; left: 21%; }
+  .box2 { top: 85%; left: 15%; }
+  .box3 { top: 84%; left: 48%; }
+  .box4 { top: 85%; left: 0%; }
+  .box5 { top: 69.5%; left: 71%; }
+  .box6 { top: 56.5%; left: 64%; }
+  .box7 { top: 82%; left: 38%; }
+  .box8 { top: 84%; left: 79%; }
+  .box9 { top: 84%; left: 64%; }
+  .box10 { top: 37.5%; left: 67%; }
+  .box11 { top: 12%; left: 77%; }
+  .box12 { top: 23%; left: 0%; }
+  .box13 { top: 39%; left: 11%; }
   .box14 { top: 22%; left: 50%; }
-  .box15 { top: 36%; left: 7%; }
+  .box15 { top: 9%; left: 9%; }
 
-  /* アイコンサイズを少し小さく */
+   /* アイコンを少し小さく */
   .icon {
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
   }
+  .small-icon {
+  width: 60px !important;
+  height: auto !important;
+}
+
 
   /* タイトルも少し小さく */
   .top-page > h1 {
