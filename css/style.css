@@ -512,7 +512,11 @@ h1, h2 {
   animation-delay: calc(var(--i) * 0.3s);
   transition: transform 0.2s;
 }
-
+/* アイコン3つのサイズを小さく */
+.small-icon {
+  width: 70px !important;
+  height: auto !important;
+}
 .icon:hover img {
   transform: scale(1.2);
 }
@@ -780,6 +784,7 @@ section[id] {
     font-size: 1rem; /* 小さい画面でも読みやすく */
   }
 }
+
 
 
 
