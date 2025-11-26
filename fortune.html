@@ -10,13 +10,23 @@
     .answer-btn.disabled { pointer-events: none; opacity: 0.6; }
     .answer-btn.selected { background-color: #fbbf24; color: #1f2937; }
     #progress-bar { height: 10px; background-color: #fbbf24; width: 0%; transition: width 0.3s; }
+    
+    /* 💡 指示文のスタイル */
+    .instruction-text {
+      display: block; 
+      font-size: 0.8em; 
+      font-style: italic; 
+      font-weight: normal; 
+      color: #6b7280; 
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col items-center p-4 text-gray-800 text-lg leading-relaxed">
 
   <h1 class="text-3xl font-bold mb-6 text-center">AI Fortune Teller: Discover Your True Self and the Year to Come</h1>
+  <p></p>
 
-  <!-- プログレス -->
   <div id="progress-section" class="w-full max-w-xl mb-4">
     <div class="flex justify-between mb-1">
      <span id="progress-text" class="text-gray-700 text-base"></span>
@@ -26,18 +36,15 @@
     </div>
   </div>
 
-  <!-- クイズ本体 -->
   <div id="quiz-content" class="w-full max-w-xl bg-white p-6 rounded-lg shadow-md">
-   <h2 id="question" class="text-2xl font-semibold mb-8 text-center min-h-[100px]"></h2>
+    <h2 id="question" class="text-2xl font-semibold mb-8 text-center min-h-[100px]"></h2>
     <div id="answers" class="grid grid-cols-1 gap-4"></div>
   </div>
 
-  <!-- ローディング演出 -->
   <div id="loading-container" class="hidden w-full max-w-xl p-6 text-center text-xl font-semibold">
     <p></p>
   </div>
 
-  <!-- 結果表示 -->
   <div id="result-container" class="hidden w-full max-w-xl bg-white p-6 rounded-lg shadow-md text-center">
     <h2 id="result-title" class="text-2xl font-semibold mb-4 text-sky-800"></h2>
     <img id="result-image" class="mx-auto mb-4 rounded-lg shadow-md" width="200" alt="">
@@ -45,34 +52,44 @@
     <p id="result-message" class="mb-6 text-gray-900 text-lg leading-relaxed italic"></p>
 
 
-    <!-- 🔹トップページへ戻るボタン -->
     <a href="index.html#fortune"
-       class="inline-block bg-sky-400 hover:bg-sky-500 text-white font-semibold py-2 px-6 rounded-full transition-all shadow">
-       Back to Christmas Page
+        class="inline-block bg-sky-400 hover:bg-sky-500 text-white font-semibold py-2 px-6 rounded-full transition-all shadow">
+        Back to Christmas Page
     </a>
   </div>
 
   <script>
   document.addEventListener('DOMContentLoaded', () => {
 
+    // 💡 全ての質問に 'instruction' フィールドを追加しました
     const quizData = [
-  { question: "Your friend seems down. If you can’t just ignore it, which type are you?", answers: [
+  { question: "Your friend seems down. If you can’t just ignore it, which type are you?", 
+    instruction: "Please click the option that applies.", // 👈 追加
+    answers: [
       { text: "You say, 'What’s wrong? I’m here if you want to talk,' and become a good listener full of empathy.", type: "empathy" },
       { text: "You say, 'What can I do? Let’s find a solution together,' and your rescue spirit kicks in.", type: "leader" }
     ]},
-  { question: "You’ve hit a big wall (not a physical one!). What do you do?", answers: [
+  { question: "You’ve hit a big wall (not a physical one!). What do you do?", 
+    instruction: "Please click the option that applies.", // 👈 追加
+    answers: [
       { text: "First, pause and analyze. You take time to calmly plan your next move.", type: "analysis" },
       { text: "Less thinking, more doing! You act first and figure it out as you go.", type: "adventure" }
     ]},
-  { question: "When you’re tired, how do you hit the reset button?", answers: [
+  { question: "When you’re tired, how do you hit the reset button?", 
+    instruction: "Please click the option that applies.", // 👈 追加
+    answers: [
       { text: "Spend quiet time doing absolutely nothing — just being still.", type: "relax" },
       { text: "Eat something you love and soak in that happy feeling.", type: "healing" }
     ]},
-  { question: "When do you get completely absorbed in your work or hobbies?", answers: [
+  { question: "When do you get completely absorbed in your work or hobbies?", 
+    instruction: "Please click the option that applies.", // 👈 追加
+    answers: [
       { text: "When you dive deep into details, striving for perfection on your own.", type: "artisan" },
       { text: "When you collaborate with others and move forward joyfully as a team.", type: "optimism" }
     ]},
-  { question: "Plans suddenly changed! How do you switch gears?", answers: [
+  { question: "Plans suddenly changed! How do you switch gears?", 
+    instruction: "Please click the option that applies.", // 👈 追加
+    answers: [
       { text: "You think, 'Hey, maybe this will be fun!' — you’re flexible and excited.", type: "freedom" },
       { text: "You feel a bit uneasy and take time to carefully plan your next step.", type: "cautious" }
     ]}
@@ -166,7 +183,13 @@ const resultsData = {
       if(currentQuestionIndex<quizData.length){
         updateProgress();
         const current = quizData[currentQuestionIndex];
-        questionEl.innerText = current.question;
+        
+        // 💡 修正箇所: 質問文と指示文をHTMLに埋め込む
+        questionEl.innerHTML = `
+            ${current.question}
+            <span class="instruction-text">${current.instruction}</span>
+        `;
+        
         answersEl.innerHTML = '';
         current.answers.forEach(ans=>{
           const btn = document.createElement('button');
@@ -193,26 +216,26 @@ const resultsData = {
     }
 
       function startResultSequence(){
-  quizContentEl.classList.add('hidden');
-  progressSectionEl.classList.add('hidden');
-  loadingContainerEl.classList.remove('hidden');
+    quizContentEl.classList.add('hidden');
+    progressSectionEl.classList.add('hidden');
+    loadingContainerEl.classList.remove('hidden');
 
-  const loadingText = loadingContainerEl.querySelector('p');
-  let i = 0;
+    const loadingText = loadingContainerEl.querySelector('p');
+    let i = 0;
 
-  function showNextMessage(){
-    if(i >= messages.length){
-      showResult(); // すべて表示後に結果表示
-      return;
+    function showNextMessage(){
+      if(i >= messages.length){
+        showResult(); // すべて表示後に結果表示
+        return;
+      }
+      loadingText.innerText = messages[i].text;
+      const delay = messages[i].duration;
+      i++;
+      setTimeout(showNextMessage, delay);
     }
-    loadingText.innerText = messages[i].text;
-    const delay = messages[i].duration;
-    i++;
-    setTimeout(showNextMessage, delay);
-  }
 
-  // 最初のメッセージから開始
-  showNextMessage();
+    // 最初のメッセージから開始
+    showNextMessage();
 }
 
     function showResult() {
@@ -244,10 +267,10 @@ const resultsData = {
     // 🔹表示切り替え
     loadingContainerEl.classList.add('hidden');
     resultContainerEl.classList.remove('hidden');
-  }
+    }
 
   // 🌟最初の質問を読み込む（これを残すのが重要！）
-  if (quizContentEl) loadQuestion();
+    if (quizContentEl) loadQuestion();
 
 }); // ←ここでイベント全体を閉じます（重要）
 </script>
