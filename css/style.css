@@ -852,7 +852,7 @@ section[id] {
 @media (max-width: 768px) {
   /* ① ヘッダーと重ならないように余白をしっかり確保 */
   .top-page {
-    margin-top: 150px !important; 
+    margin-top: 90px !important; 
   }
 
   /* タイトルも少し小さく */
@@ -1146,3 +1146,4 @@ section[id] {
 }
 
  
+
