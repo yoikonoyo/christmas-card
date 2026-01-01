@@ -1,24 +1,41 @@
 @charset "UTF-8";
 
-body {
-  font-family: "Quicksand", "Noto Sans JP", sans-serif;
-  line-height: 1.7;
-  color: #3b3b3b;
-  background: #faf9f7;
+/* 全体のリセット */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* ======= ここから body 完全まとめ版 ======= */
 body {
-  border: 10px solid rgba(255, 235, 235, 0.6); /* やわらかいピンク系の光枠 */
+  /* 💛 フォント（最優先：必ず反映） */
+  font-family: "Quicksand", "Noto Sans JP", sans-serif !important;
+  line-height: 1.7;
+  color: #3a4a3d; 
+  
+  
+  /* 💛 外枠デザイン（光のフレーム） */
+  border: 10px solid rgba(255, 235, 235, 0.6);
   border-radius: 12px;
   box-shadow: 0 0 25px rgba(180, 100, 100, 0.1);
-  background-color: #fffdfa;
-}
+  background-color: #fffdfa; 
 
-body {
-  background-image: url('https://www.transparenttextures.com/patterns/snow.png');
+  /* 💛 背景（冬の光 × 雪） */
+  background: linear-gradient(to bottom right, #fafafa, #f2f8f6);
+  background-image:
+    url('https://www.transparenttextures.com/patterns/snow.png'),
+ radial-gradient(circle at top left, rgba(255,255,255,0.9), rgba(235,245,240,0.9));
   background-repeat: repeat;
   background-size: contain;
+  background-blend-mode: soft-light;
+
+  /* レイアウト基礎 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+/* ======= ここまで body 完全まとめ版 ======= */
 
 
 /* 全体のラップ */
@@ -121,99 +138,79 @@ body {
 
 /* メイン余白 */
 .top-page {
-   padding-top: 140px; /* ← header の実際の高さに合わせる */
-  margin-top: 0;      /* ← これは消す */
+  margin-top: 100px; /* header分のスペースを確保 */
 }
 
+/* クリスマスツリーセクション */
 
-/* Merry Christmas and Happy New Yearの装飾 */
-.greeting {
+/* あいさつ文をネオン風にする */
+.newyear-title {
+  font-size: 2rem;
   text-align: center;
-  font-size: 1.4rem;
-  font-family: 'Quicksand', 'Noto Sans JP', sans-serif;
-  font-weight: 600;
-  margin: 0 0 30px;
+  margin: 20px 0 5px;
+  padding: 10px 0;
+   /* color: #9aec93;  ← 白から、淡いピンクに変更 */
+}
   
-  /* 虹色アニメーション用 */
-  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-  background-size: 400% 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: rainbow 6s ease-in-out infinite;
+/* ネオン（光る）効果 - 案B: 色が滑らかに変化する */
+.newyear-title-neon {
+  /* 文字色はアニメーションで制御するため、基本は明るい色に */
+  color: #FF5252; 
+  font-weight: 700;
+  text-shadow: none; /* ぼやけは完全に除去 */
+  
+  /* 新しいアニメーションを適用 */
+  animation: colorShift 5s ease-in-out infinite alternate; 
 }
 
-@keyframes rainbow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* @keyframes colorShift: お祝いカラーで滑らかに変化 */
+@keyframes colorShift {
+  0% {
+    color: #FF5252; /* 祝いの赤 */
+  }
+  33% {
+    color: #FFD700; /* 豪華な金 */
+  }
+  66% {
+    color: #2E8B57; /* 縁起の良い緑 */
+  }
+  100% {
+    color: #FF5252; /* 赤に戻る */
+  }
 }
 
 
-/* =====================================
-   🌳 tree-container 本体（PC含む一般表示）
-   ===================================== */
+/* color, text-shadow, animation はネオン効果を適用するため削除しました */
+.top-page > h1 {
+  text-align: center;
+  font-size: 2.2rem; /* 2remと2.2remで大きい方を採用 */
+  margin-bottom: 1rem;
+  font-family: "Quicksand", cursive;
+  /* color: #b22222; や animation: wiggle; は削除 */
+}
+
+
+/* 🎄 ツリー全体 */
 .tree-container {
   position: relative;
   width: 100%;
-  max-width: 600px;       /* PC表示時の最大幅 */
-  margin: 0px auto 30px; /* 上: headerとの距離を少し広く、下: 次セクションと近づける */
-  border: 4px solid #c7d8cc;
+  max-width: 600px; /* 最大幅 */
+  margin: 120px auto 0; /* heroタイトルとツリーの間に余白を作る */
+  border: 4px solid #2e8b57;
   border-radius: 20px;
   background: #ffffff;
-  box-shadow: 0 8px 16px rgba(120, 150, 120, 0.15);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
   overflow: hidden;
-  text-align: center;
-  padding-bottom: 20px;  /* 枠内の文字・飾りのスペース */
+  margin-top: -10px;/* ← 60px →-10px に変更でギュッと詰まる */
 }
 
-/* 枠内の文字 */
-.tree-message {
-  position: relative;
-  top: 0;               /* PCでは枠内の中央付近 */
-  margin-top: 1rem;
-  font-size: 1rem;
-}
-
-/* --- メッセージの切り替え設定 --- */
-
-/* デフォルト設定（PC向け: 768px以上の画面幅） */
-/* PC用のテキストを表示し、モバイル用のテキストを非表示にする */
-.tree-message .pc-only {
-  display: inline;
-}
-.tree-message .sp-only {
-  display: none;
-}
-
-/* ツリー画像 */
-.tree-container img {
+/*  heroアニメ画像 */
+.tree-container video {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* ツリー下のメッセージ */
-.tree-message {
-  font-family: "Comic Sans MS", "Segoe UI", cursive;
-  font-size: 1.2rem;
-  color: #b22222;
-  margin-top: 1rem;
-  animation: twinkle 2s infinite alternate ease-in-out;
-}
-
-/* ツリー下のふわっと点滅文字 */
-@keyframes twinkle {
-  from { opacity: 0.5; transform: scale(1); }
-  to { opacity: 1; transform: scale(1.05); }
-}
-
-/* tree-box */
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 /* ❄️ 降る雪エフェクト */
 .tree-container::before {
@@ -243,29 +240,162 @@ body {
   z-index: 1; /* 背景層 */
 }
 
-/* 🎁 アイコン */
+/* アイコンの枠や影にも統一感を */
+.tree-container {
+  border: 4px solid #c7d8cc;
+  box-shadow: 0 8px 16px rgba(120, 150, 120, 0.15);
+}
+
+.tree-message,
+.tree-message span {
+  font-family: 'Quicksand', sans-serif !important;
+  text-align: center;       /* 中央寄せ */
+  font-size: 1.0rem;
+  font-weight: 400;         /*フォントの太さ100～900で数字が大きいと太い*/
+  color: #d12b2b;           /* 明るい赤（黒から変更） */
+  margin: 8px 0 10px;
+  padding: 5px 0;
+  position: relative;
+  z-index: 5;             /* 上部の飾りより前に出す */
+}
+
+/* --- メッセージの切り替え設定 --- */
+.tree-message .pc-only {
+  display: inline;
+}
+.tree-message .sp-only {
+  display: none;
+}
+
+/* PCアイコン位置 */
+/* 共通：アイコンを中心基準にする */
+.icon {
+  position: absolute;
+  transform-origin: center center;
+}
+
+/* box1 */
+.box1 {
+  top: 13.5%;
+  left: 6%;
+  transform: translate(-176px, -187px);
+}
+
+/* box2 */
+.box2 {
+  top: 86%;
+  left: 63%;
+  transform: translate(-243px, -187px);
+}
+
+/* box3 */
+.box3 {
+  top: 86%;
+  left: 50%;
+  transform: translate(-213px, -187px);
+}
+
+/* box4 */
+.box4 {
+  top: 86%;
+  left: 24%;
+  transform: translate(-215px, -187px);
+}
+
+/* box5 */
+.box5 {
+  top: 74.5%;
+  left: 74%;
+  transform: translate(-185px, -187px);
+}
+
+/* box6 */
+.box6 {
+  top: 59.6%;
+  left: 67%;
+  transform: translate(-153px, -187px);
+}
+
+/* box7 */
+.box7 {
+  top: 86.5%;
+  left: 8%;
+  transform: translate(-225px, -187px);
+}
+
+/* box8 */
+.box8 {
+  top: 86%;
+  left: 77%;
+  transform: translate(-209px, -187px);
+}
+
+/* box9 */
+.box9 {
+  top: 86%;
+  left: 39%;
+  transform: translate(-249px, -187px);
+}
+
+/* box10 */
+.box10 {
+  top: 58.2%;
+  left: 24%;
+  transform: translate(-178px, -187px);
+
+}
+
+/* box11 */
+.box11 {
+  top: 13%;
+  left: 80%;
+  transform: translate(-136px, -187px);
+}
+
+/* box12（star1） */
+.box12 {
+  top: 40%;
+  left: 11%;
+  transform: translate(-195px, -187px);
+}
+
+/* box13（cat） */
+.box13 {
+  top: 41.8%;
+  left: 60%;
+  transform: translate(-165px, -187px);
+}
+
+/* box14（star3） */
+.box14 {
+  top: 22%;
+  left: 52%;
+  transform: translate(-193px, -187px);
+}
+
+/* box15（star4） */
+.box15 {
+  top: 32%;
+  left: 20%;
+  transform: translate(-193px, -187px);
+}
+
+
+
+/*アイコン */
 .icon {
   position: absolute;
   width: 95px;
   height: 95px;
   cursor: pointer;
   transition: transform 0.2s;
-  z-index: 2; /* ←ここ追加。雪より前面に出す*/
-} 
+  z-index: 2; /* ←ここ追加。雪より前面に出す */
+}
 
 .icon:hover {
   transform: scale(1.15);
 }
 
-
-/* 見出し（Merry Christmas...） */
-.top-page > h1 {
-  text-align: center;
-  font-size: 2rem;
-  color: #b22222;
-  margin-bottom: 1rem;
-  font-family: "Quicksand", cursive;
-}
 
 /* 各アイコン画像 */
 .tree-container .icon img {
@@ -289,6 +419,7 @@ body {
   font-size: 0.8rem;
   opacity: 0;
   transition: opacity 0.3s;
+  
 
    /* ← ここから改善ポイント ↓ */
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);  /* 文字を少し浮かせる */
@@ -301,160 +432,34 @@ body {
   visibility: visible;
   opacity: 1;
 }
+/* アイコン位置をここから↑に移動 */
 
-/* PCアイコン位置 */
-/* 共通：アイコンを中心基準にする */
-.icon {
+/* --- Snow Animation (Pop & Visible) --- */
+.snow {
   position: absolute;
-  transform-origin: center center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(200, 220, 255, 0.9) 1px, transparent 1px),
+                    radial-gradient(rgba(220, 240, 255, 0.8) 1.5px, transparent 1.5px),
+                    radial-gradient(rgba(255, 255, 255, 0.8) 2px, transparent 2px);
+  background-size: 40px 40px, 60px 60px, 80px 80px;
+  animation: snowFall 15s linear infinite;
+  opacity: 0.9;
 }
 
-/* box1 */
-.box1 {
-  top: 13.5%;
-  left: 6.5%;
-  transform: translate(-176px, -187px);
-}
-
-/* box2 */
-.box2 {
-  top: 85%;
-  left: 61%;
-  transform: translate(-243px, -187px);
-}
-
-/* box3 */
-.box3 {
-  top: 85%;
-  left: 48%;
-  transform: translate(-213px, -187px);
-}
-
-/* box4 */
-.box4 {
-  top: 85%;
-  left: 24%;
-  transform: translate(-215px, -187px);
-}
-
-/* box5 */
-.box5 {
-  top: 73.5%;
-  left: 75%;
-  transform: translate(-185px, -187px);
-}
-
-/* box6 */
-.box6 {
-  top: 59%;
-  left: 67%;
-  transform: translate(-153px, -187px);
-}
-
-/* box7 */
-.box7 {
-  top: 86%;
-  left: 9%;
-  transform: translate(-225px, -187px);
-}
-
-/* box8 */
-.box8 {
-  top: 84.7%;
-  left: 75%;
-  transform: translate(-209px, -187px);
-}
-
-/* box9 */
-.box9 {
-  top: 85%;
-  left: 37%;
-  transform: translate(-249px, -187px);
-}
-
-/* box10 */
-.box10 {
-  top: 59%;
-  left: 25.5%;
-  transform: translate(-178px, -187px);
-
-}
-
-/* box11 */
-.box11 {
-  top: 13%;
-  left: 80.7%;
-  transform: translate(-136px, -187px);
-}
-
-/* box12（star1） */
-.box12 {
-  top: 40%;
-  left: 11%;
-  transform: translate(-195px, -187px);
-}
-
-/* box13（cat） */
-.box13 {
-  top: 42.8%;
-  left: 61%;
-  transform: translate(-165px, -187px);
-}
-
-/* box14（star3） */
-.box14 {
-  top: 22%;
-  left: 52%;
-  transform: translate(-193px, -187px);
-}
-
-/* box15（star4） */
-.box15 {
-  top: 32%;
-  left: 20%;
-  transform: translate(-193px, -187px);
+@keyframes snowFall {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
 }
 
 
-
-/*アイコン */
-.icon {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  cursor: pointer;
-  transition: transform 0.2s;
-  z-index: 2; /* ←ここ追加。雪より前面に出す */
-}
-
-.icon:hover {
-  transform: scale(1.15);
-}
-
-
-
-/* FAQセクション */
-#faq {
-  scroll-margin-top: 120px; /* headerで隠れないようにする */
-  margin-top: 4rem;
-  padding: 3rem 1rem;
-  border-top: 5px solid #b22222;
-  background: linear-gradient(to bottom right, #faf9f6, #f1f0eb);
-  border-radius: 20px;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.05);
-}
-
-/* ABOUTセクション */
-#about {
-  position: relative;
-  color: #3d5b3b;
-  background: linear-gradient(to bottom right, #fdf7f3, #f3ede9);
-  text-align: center;
-
-  border-top: none !important;  /* 以前の点線を削除 */
-  margin-top: 40px;             /* FAQとの間にゆとりを持たせる */
-  padding-top: 20px;            /* 内側の余白を軽く確保 */
-}
 
 /* かわりに装飾線を ::before で下めに出す（位置・色はここで調整） */
 #about::before {
@@ -469,15 +474,14 @@ body {
 }
 
 #about h1 {
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 2.2rem;
   color: #b22222;
   margin-bottom: 0.5rem;
   letter-spacing: 1px;
 }
 
 #about h2 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: #2e8b57;
   margin-bottom: 2rem;
   font-weight: 600;
@@ -521,15 +525,6 @@ body {
    ❄️ 全体トーン統一：冬・ナチュラル・やさしさ
    ===================================== */
 
-/* ふんわり雪の光と背景の色味を調整 */
-body {
-  background: linear-gradient(to bottom right, #fafafa, #f2f8f6);
-  background-image:
-    url('https://www.transparenttextures.com/patterns/snow.png'),
-    radial-gradient(circle at top left, rgba(255,255,255,0.9), rgba(235,245,240,0.9));
-  background-blend-mode: soft-light;
-  color: #3a4a3d;
-}
 
 /* 各セクションの背景を微妙に統一トーンへ寄せる */
 .tree-container,
@@ -554,10 +549,8 @@ body {
 }
 
 /* テキストと見出しの彩度をおさえてナチュラルに */
-
 h1, h2 {
   color: #3d5b3b;
-  /* font-weight: bold; */
 }
 
 .meguru-page > h1 {
@@ -565,11 +558,7 @@ h1, h2 {
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
 }
 
-/* アイコンの枠や影にも統一感を */
-.tree-container {
-  border: 4px solid #c7d8cc;
-  box-shadow: 0 8px 16px rgba(120, 150, 120, 0.15);
-}
+/* ここから↑に移動 */
 
 /* フッターも柔らかい色味に */
 .site-footer {
@@ -642,12 +631,6 @@ h1, h2 {
   transition: transform 0.2s;
 }
 
-/* アイコン3つのサイズを小さく */
-.small-icon {
-  width: 70px !important;
-  height: auto !important;
-}
-
 .icon:hover img {
   transform: scale(1.2);
 }
@@ -665,17 +648,6 @@ h1, h2 {
 @keyframes sparkle-move {
   0% { opacity: 1; transform: translateY(0) scale(1); }
   100% { opacity: 0; transform: translateY(-15px) scale(1.4); }
-}
-
-/* --- 3. タイトルを少しポップに --- */
-.top-page > h1 {
-  text-align: center;
-  font-size: 2.2rem;
-  color: #d40000;
-  margin-bottom: 1rem;
-  font-family: "Quicksand", cursive;
-  text-shadow: 2px 2px 6px rgba(255, 220, 220, 0.8);
-  animation: wiggle 4s ease-in-out infinite;
 }
 
 
@@ -737,18 +709,120 @@ h1, h2 {
   z-index: 0;
 }
 
-/* --- Section Divider (Cute & Elegant Version) --- */
+
+/* --- 固定ヘッダー分の余白補正 --- */
+section[id] {
+  scroll-margin-top: 100px; /* ヘッダーの高さに合わせて調整 */
+}
+
+
+/* --- カード全体和モダン調整 --- */
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: #fdf7ef;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 350px;
+  padding: 1rem 1rem 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  object-fit: cover;
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0 1rem;
+}
+
+
+/* --- 単独カード用スタイル --- */
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #f5f5f7; /* 淡いグレーで上品に */
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 350px;
+  padding: 1rem 1rem 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  object-fit: cover;
+}
+
+.card h3 {
+  font-size: 1rem;
+  color: #333;
+  margin: 0.5rem 0 1rem;
+}
+
+.card a {
+  display: inline-block;
+  background: #5a8d7c; /* 他の緑より落ち着いたトーン */
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background 0.25s ease;
+}
+
+.card a:hover {
+  background: #4b7a6c;
+}
+
+.story-link {
+  background: linear-gradient(90deg, #e0b75b, #d45b5b);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+}
+
+.story-link:hover {
+  background: linear-gradient(90deg, #d45b5b, #e0b75b);
+}
+
+/* --- セクション区切り線（可愛い＆おしゃれVer.） --- */
 .section-divider {
   position: relative;
-  text-align: center;
-  background: transparent;
 }
 
 .divider-line {
   width: 180px;
   height: 2px;
   border-top: 2px dotted #dcbf80;
-  margin: 0 auto;
   position: relative;
 }
 
@@ -769,77 +843,112 @@ h1, h2 {
   right: -20px;
 }
 
-/* テキスト中央寄せ＋枠なし */
-.divider-text {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #a67b5b;
-  font-style: italic;
-  font-family: cursive;
-  text-align: center;
-}
 
-/* --- 固定ヘッダー分の余白補正 --- */
-section[id] {
-  scroll-margin-top: 100px; /* ヘッダーの高さに合わせて調整 */
-}
+/*=====================================
+   ☆☆☆ スマホ対応 ☆☆☆
+===================================== */
 
-
-/* =====================================
-   📱 スマホ（幅768px以下）用の位置調整
-   ===================================== */
+/* スマホ表示時の調整 */
 @media (max-width: 768px) {
+  /* ① ヘッダーと重ならないように余白をしっかり確保 */
+  .top-page {
+    margin-top: 150px !important; 
+  }
+
+  /* タイトルも少し小さく */
+  .top-page > h1 {
+    font-size: 1.6rem;
+  }
+
+  .qr-link {
+    width: 40px;
+    height: 40px;
+  }
+
   .site-header .inner {
     flex-direction: column;
   }
-    
-/*  .hero {
-  padding-bottom: 100px;  hero下にスペースを確保 
-}*/
-  .global-nav ul {
+
+  /* 挨拶文のフォント調整 */
+  /* ③ 英文：行間・余白を詰める */
+  .eng {
+    font-size: 1.2rem;
+    line-height: 1.2;
+    margin-bottom: 0.2rem; /* ← 英文と日本文を詰める */
+  }
+
+  /* ④ 日本文：英文との間を少しだけ取る、下は詰める */
+  .jp {
+    font-size: 1.3rem;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 0.4rem;  /* ← ツリーとの間を詰める */
+  }
+  
+    /* ② 挨拶文：全体の余白と行間をリセットして詰める */
+  .newyear-title {
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.25 !important;
+    padding: 0;
+  }
+
+  /* 英文だけさらに少し小さくしたい場合 */
+  .newyear-title br:first-of-type::after {
+    content: ""; /* CSSだけでは英文だけ指定しにくいので別案も後述 */
+  }
+
+  .newyear-title-bright {
+   font-size: 2.2rem;
+   padding-top: 80px;   /* ← 120px → 90px に変更 */
+   margin-bottom: 0.3rem;
+   line-height: 1.2;   /* ← 行間も少し詰めてバランスよく */
+  }
+
+   .global-nav ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
   }
-
-   .qr-link {
-    width: 40px;
-    height: 40px;
+  .tree-container {
+    max-width: 100%;
+    margin-top: 10px !important; /* ⑤ ツリーの位置も詰める */
+    max-width: 95%;
+    margin-top: 40px;
   }
-
-
-   #snowCanvas {
+ 
+  #snowCanvas {
   top: -100px;   /* 上方向に余裕 */
   bottom: -100px; /* 下方向に余裕 */
 }
 
-  #about h1 {
-    font-size: 1.6rem;
-  }  
-
-  .tree-container {
-    max-width: 100%;
-    margin: -20px auto 20px; /* 上を少し狭め、下を少し狭く */
-    padding-bottom: 15px;     /* 枠内の文字や飾りのスペースを微調整 */
+  /* --- treeメッセージの切り替え設定 --- */
+   .tree-message {
+    display: block;
+    text-align: center;
+    font-size: 1.05rem;   /* 少し控えめ */
+    margin-top: 5px;      /* tree-img との距離を縮める */
+    padding: 5px 0;       /* メッセージ上下の余白 */
+    color: #e84a4a;
   }
 
-  .tree-message {
-    top: 10px;               /* 文字をツリー画像の下にずらす */
-    font-size: 0.95rem;      /* 小さい画面でも読みやすく */
-  }
-  /* --- メッセージの切り替え設定 --- */
-  /* PC用のテキストを非表示にする */
-  .tree-message .pc-only {
-    display: none;
-  }
-  /* モバイル用のテキストを表示する */
-  .tree-message .sp-only {
-    display: inline;
-  }
+  /* PC/SP 切替 */
+  .tree-message .pc-only { display: none; }
+  .tree-message .sp-only { display: inline; }
 
-
+  
+  /* アイコンを少し小さく */
+  .icon {
+    width: 85px;
+    height: 85px;
+  }
+  .small-icon {
+  width: 60px !important;
+  height: auto !important;
+  }
+  
 /* fortune.html用 */
 
 /* 非表示クラス */
@@ -883,237 +992,157 @@ section[id] {
   margin: 2rem auto;
 }
 
-  .tree-message {
-    position: relative;
-    top: 10px; /* 文字をツリー画像の下へずらす */
-    margin-top: 1rem;
-    font-size: 1rem; /* 小さい画面でも読みやすく */
+#fortune h2{
+ font-size: 1.6rem; 
+}
+
+#faq h2{
+ font-size: 1.5rem; 
+}
+
+#faq p{
+ font-size: 1.0rem; 
+}
+
+#about h1 {
+    font-size: 1.6rem;
+  }  
+
+  /* すべての大見出し */
+  /* 新年タイトル */
+  h1.newyear-title {
+    margin-top: 2rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* ツリー */
+  .tree-container {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* AI占い（paddingをやや縮小） */
+  #fortune {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  /* 干支セクション */
+  #about {
+    margin-top: 2.5rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  /* 区切り線 */
+  .section-divider {
+    margin-top: 2rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* ショートストーリー */
+  .card-wrapper {
+    margin-top: 1.5rem !important;
+    margin-bottom: 2rem !important;
   }
 }
 
-/* -------------------------------------------
- 2. 狭い画面向けの共通設定 (最大幅430px以下に集約)
- ------------------------------------------- */
-@media only screen and (max-width: 430px) {
-    /* 💡 h1とsmall-iconのサイズ設定をここに集約します */
-  .top-page > h1 {
-  font-size: 1.0rem;
-  }
- 
-  .small-icon{
-   width: 70px !important;
-   height: auto !important; 
-}
-}
- 
-/* スマホ専用のアイコン位置*/
+/* スマホ専用のアイコン補正（最優先で適用）  */
 @media only screen and (max-width: 375px) and (max-height: 812px) {
 
-  .box1 { top: 9.6%; left: 1%; }
+  .box1 { top: 7.5%; left: 1%; }
   .box2 { top: 82%; left: 57%; }
   .box3 { top: 82%; left: 40%; }
   .box4 { top: 82%; left: 11%; }
-  .box5 { top: 68.6%; left: 71%; }
-  .box6 { top: 54.5%; left: 62.8%; }
+  .box5 { top: 68%; left: 71%; }
+  .box6 { top: 54%; left: 63%; }
   .box7 { top: 84%; left: -2%; }
   .box8 { top: 82%; left: 76%; }
   .box9 { top: 82%; left: 28%; }
-  .box10 { top: 54%; left: 20%; }
+  .box10 { top: 53.6%; left: 20%; }
   .box11 { top: 9%; left: 77%; }
   .box12 { top: 42%; left: 0%; }
-  .box13 { top: 38.5%; left: 57.3%; }
-  .box14 { top: 21%; left: 50%; }
+  .box13 { top: 38%; left: 58%; }
+  .box14 { top: 20%; left: 50%; }
   .box15 { top: 31%; left: 13%; }
 
-  } 
-
-  /* Samsung Galaxy S8+ (360x740) 用の微調整 */
-@media only screen and (min-width: 350px) and (max-width: 360px) {
-    /* ズレているアイコンのクラス名に修正を適用 */
-    .box1 { top: 9.5%; left: 0.5%; }
-    .box5 { top: 67.5%; left: 68.6%; } 
-    .box6 { top: 53.5%; left: 61.7%; }
-    .box10 { top: 54.1%; left: 20%; }
-    .box11 { top: 8.5%; left: 76%; }
-    .box13 { top: 38.6%; left: 57.3%; }
-
+  /* アイコン3つのサイズを小さく */
+.small-icon {
+  width: 70px !important;
+  height: auto !important;
 }
-
+}
 
 /* 414px 周辺（Pixel7 / iPhone XR / Galaxy S20） */
 @media only screen and (min-width: 400px) and (max-width: 430px) {
-  .box1 { top: 11%; left: 2.2%; }
-  .box2 { top: 82%; left: 57%; }
-  .box3 { top: 82%; left: 40%; }
-  .box4 { top: 82.3%; left: 11%; }
-  .box5 { top: 69.6%; left: 71.5%; }
-  .box6 { top: 55.6%; left: 64.2%; }
-  .box7 { top: 84%; left: -1%; }
-  .box8 { top: 82%; left: 76%; }
-  .box9 { top: 82%; left: 28%; }
-  .box10 { top: 55.7%; left: 22%; }
-  .box11 { top: 9.8%; left: 77%; }
-  .box12 { top: 42%; left: 0%; }
-  .box13 { top: 40%; left: 58%; }
-  .box14 { top: 21%; left: 50.3%; }
-  .box15 { top: 31%; left: 13%; }
-
-  }
-
-/* iPhone 12 Pro（縦） */
-@media only screen and (min-width: 390px) and (max-width: 390px) {
-  .box1 { top: 10.2%; left: 1%; }
+  .box1 { top: 11%; left: 2%; }
   .box2 { top: 82%; left: 57%; }
   .box3 { top: 82%; left: 40%; }
   .box4 { top: 82%; left: 11%; }
-  .box5 { top: 69%; left: 70.7%; }
-  .box6 { top: 54.6%; left: 62.7%; }
+  .box5 { top: 69.6%; left: 71%; }
+  .box6 { top: 55%; left: 64%; }
   .box7 { top: 84%; left: -1%; }
   .box8 { top: 82%; left: 76%; }
   .box9 { top: 82%; left: 28%; }
-  .box10 { top: 54.5%; left: 21.5%; }
-  .box11 { top: 9.3%; left: 76.7%; }
+  .box10 { top: 55.8%; left: 22%; }
+  .box11 { top: 10%; left: 77%; }
   .box12 { top: 42%; left: 0%; }
-  .box13 { top: 39.3%; left: 57%; }
-  .box14 { top: 21.5%; left: 49.5%; }
+  .box13 { top: 40%; left: 58%; }
+  .box14 { top: 20%; left: 50%; }
   .box15 { top: 31%; left: 13%; }
+}
 
-  }
+/* iPhone 12 Pro（縦） */
+@media only screen and (min-width: 390px) and (max-width: 390px) {
+ .box1 { top: 10.8%; left: 2%; }
+  .box2 { top: 82%; left: 57%; }
+  .box3 { top: 82%; left: 40%; }
+  .box4 { top: 82%; left: 11%; }
+  .box5 { top: 68.7%; left: 71.2%; }
+  .box6 { top: 54.5%; left: 63%; }
+  .box7 { top: 84%; left: -1%; }
+  .box8 { top: 82%; left: 76%; }
+  .box9 { top: 82%; left: 28%; }
+  .box10 { top: 55.2%; left: 22%; }
+  .box11 { top: 9.5%; left: 77%; }
+  .box12 { top: 42.5%; left: 0%; }
+  .box13 { top: 39.5%; left: 58%; }
+  .box14 { top: 20%; left: 50%; }
+  .box15 { top: 31%; left: 13%; }
+}
 
- /* iPad mini（縦）用 */
+
+
+
+  /* iPad mini（縦）用：スマホ縮小を強制キャンセル */
 @media only screen 
   and (min-device-width: 744px)
   and (max-device-width: 820px)
   and (orientation: portrait) {
   
-  .box1 { top: 14%; left: 7%; }
-  .box2 { top: 88%; left: 62%; }
+  .box1 { top: 14%; left: 8%; }
+  .box2 { top: 88%; left: 64%; }
   .box3 { top: 88%; left: 48%; }
   .box4 { top: 88%; left: 23%; }
-  .box5 { top: 75.5%; left: 74.5%; }
-  .box6 { top: 60.3%; left: 67.3%; }
+  .box5 { top: 75.7%; left: 74.5%; }
+  .box6 { top: 60.6%; left: 68%; }
   .box7 { top: 88%; left: 8%; }
-  .box8 { top: 87.6%; left: 76.7%; }
+  .box8 { top: 87.6%; left: 78%; }
   .box9 { top: 88%; left: 36%; }
-  .box10 { top: 59.1%; left: 24%; }
-  .box11 { top: 13.2%; left: 81.3%; }
-  .box12 { top: 43.7%; left: 4%; }
-  .box13 { top: 42.7%; left: 59.3%; }
-  .box14 { top: 22.3%; left: 52.5%; }
+  .box10 { top: 59.3%; left: 24%; }
+  .box11 { top: 13.4%; left: 81.5%; }
+  .box12 { top: 44%; left: 4%; }
+  .box13 { top: 42.8%; left: 59%; }
+  .box14 { top: 22.5%; left: 52.4%; }
   .box15 { top: 33%; left: 15%; }
-
-   .icon,
+  
+  .icon,
   .small-icon {
-    width: 110px !important;
+    width: 100px !important;
     height: auto !important;
-   }
-
   }
 
-  /* iPad Air（820px）用 */
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
- 
-    .icon,
-    .small-icon {
-        width: 110px !important; /* 既存のiPad mini用の値 110px を適用 */
-        height: auto !important;
-    }
-
-  
-  .box1 { top: 12.5%; left: 5.3%; }
-  .box2 { top: 88%; left: 62%; }
-  .box3 { top: 88%; left: 48%; }
-  .box4 { top: 88%; left: 23%; }
-  .box5 { top: 72.5%; left: 74%; }
-  .box6 { top: 58%; left: 66.5%; }
-  .box7 { top: 88%; left: 8%; }
-  .box8 { top: 87.6%; left: 76.7%; }
-  .box9 { top: 88%; left: 36%; }
-  .box10 { top: 56.5%; left: 22%; }
-  .box11 { top: 11.8%; left: 80%; }
-  .box12 { top: 44%; left: 4%; }
-  .box13 { top: 40.5%; left: 58.2%; }
-  .box14 { top: 22%; left: 52.5%; }
-  .box15 { top: 33%; left: 15%; }
 }
 
-
-
-
-
-
-
  
-  
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
